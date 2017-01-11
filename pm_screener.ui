@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>pm_screener</class>
+ <widget class="QMainWindow" name="pm_screener">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1032</width>
+    <height>684</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>PM Screener</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: rgb(225, 225, 225);
+}
+QCheckBox{
+width:130%;
+}
+QTableWidget{
+background-color: rgb(240, 240, 240);
+border: 2px solid rgb(200, 200, 200);
+}
+QTableWidget:hover, QTableWidget:focus{
+background-color:rgb(255,255,255);
+}
+QProgressBar{
+background-color: rgb(215, 215, 215);;
+color:white;
+}
+QProgressBar:bar {
+background-color: grey;
+width: 10px;
+margin: 1px;
+}
+QRadioButton:hover{
+color:rgb(100,100,100);
+}
+QTextEdit, QPlainTextEdit{
+border: 2px solid rgb(180, 180, 180);
+border-radius: 6px;
+padding: 5px;
+background-color: rgb(240, 240, 240);
+}
+QLineEdit{
+border: 2px solid rgb(180, 180, 180);
+border-radius: 4px;
+background-color: rgb(240, 240, 240);
+}
+QLineEdit:hover, QLineEdit:focus, QTextEdit:hover, QTextEdit:focus, QPlainTextEdit:hover, QPlainTextEdit:focus{
+background-color:rgb(255,255,255);
+}
+QLabel{
+padding-top:5px;
+color: black;
+font: bold;
+}
+QPushButton {
+color: black;
+border: 2px solid rgb(190, 190, 190);
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.2, cy: 1.3,
+fx: 1.0, fy: 0.5,
+radius: 1.35, stop: 0 rgb(228, 228, 228), stop: 1 rgb(208, 208, 208));
+min-width: 80px;
+font: bold;
+}
+QPushButton:pressed {
+color:blue;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 rgb(245, 245, 245));
+font:italic;
+}
+QPushButton:hover{
+color:rgb(100,100,100);
+}
+QScrollBar::horizontal {
+max-height: 7px;
+}
+QScrollBar::vertical {
+max-width: 7px;
+}
+QScrollBar::handle:vertical {
+background-color:rgb(200, 200, 200);
+max-width: 4px;
+}
+QScrollBar::handle:horizontal {
+background-color:rgb(200, 200, 200);
+max-height: 4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="MainWindow">
+   <property name="styleSheet">
+    <string notr="true">opacity: 0;</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="exit_btn">
+        <property name="statusTip">
+         <string>Exit the program</string>
+        </property>
+        <property name="text">
+         <string>Exit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="pm_screener_tab">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="stem_filter">
+       <attribute name="title">
+        <string>Stem Filter</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="3">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="statusTip">
+             <string>Stem Filter Names</string>
+            </property>
+            <property name="text">
+             <string>Stem Filter Names</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="filter_names_input">
+            <property name="statusTip">
+             <string>Stem Filter names</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="filter_ignore_line">
+            <property name="statusTip">
+             <string>Enter a stem to ignore</string>
+            </property>
+            <property name="placeholderText">
+             <string>Enter stem to ignore...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QRadioButton" name="filter_inn_radio">
+                <property name="statusTip">
+                 <string>Get results for an INN project (includes USAN avoids)</string>
+                </property>
+                <property name="text">
+                 <string>INN Project</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="filter_pharma_radio">
+                <property name="statusTip">
+                 <string>Get results for a pharma project (ignores USAN avoids)</string>
+                </property>
+                <property name="text">
+                 <string>Pharma Project</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="filter_build_doc_btn">
+              <property name="statusTip">
+               <string>Get Stem Filter results (will build an excel document)</string>
+              </property>
+              <property name="text">
+               <string>Get INN avoids</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="google_searcher">
+       <attribute name="title">
+        <string>Google Searcher</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="statusTip">
+               <string>Google Searcher Names</string>
+              </property>
+              <property name="text">
+               <string>Google Searcher Names</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="google_names_input">
+              <property name="statusTip">
+               <string>Google Searcher Names</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="google_key_input">
+              <property name="statusTip">
+               <string>Enter a keyword to search with</string>
+              </property>
+              <property name="placeholderText">
+               <string>Enter keyword to searh with here...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QRadioButton" name="google_just_names_radio">
+                <property name="statusTip">
+                 <string>Search the above names alone</string>
+                </property>
+                <property name="text">
+                 <string>Just Names</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="google_with_key_radio">
+                <property name="statusTip">
+                 <string>Search the above names with a keyword</string>
+                </property>
+                <property name="text">
+                 <string>With Keyword</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QPushButton" name="google_search_btn">
+                <property name="statusTip">
+                 <string>Open google search results for these names in browser</string>
+                </property>
+                <property name="text">
+                 <string>Open Pages</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>234</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>240</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="micromedexer">
+       <attribute name="title">
+        <string>Micromedex-er</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="1" rowspan="3">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="statusTip">
+               <string>Micromedex Names</string>
+              </property>
+              <property name="text">
+               <string>Micromedex Names</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="micro_names_input">
+              <property name="statusTip">
+               <string>Enter names to be searched on Micromedex</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QPushButton" name="micro_search_btn">
+                <property name="statusTip">
+                 <string>Search the above names on Micromedex</string>
+                </property>
+                <property name="text">
+                 <string>Search Micromedex</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QLineEdit" name="micro_username_input">
+                  <property name="statusTip">
+                   <string>Enter Micromedex username</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Username</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="micro_password_input">
+                  <property name="statusTip">
+                   <string>Enter Micromedex password</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Password</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="2" rowspan="3">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="statusTip">
+             <string>Micromedex Data Table</string>
+            </property>
+            <property name="text">
+             <string>Micromedex Data Table</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="micro_table">
+            <property name="statusTip">
+             <string>Micromedex Data Table</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QProgressBar" name="micro_progress_bar">
+              <property name="value">
+               <number>24</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>200</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="micro_to_excel_btn">
+              <property name="statusTip">
+               <string>See results in Excel</string>
+              </property>
+              <property name="text">
+               <string>See all data in Excel</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Leave</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="actionView_pharma_avoids">
+   <property name="text">
+    <string>View Pharma Avoids</string>
+   </property>
+   <property name="statusTip">
+    <string>View Pharma Avoids</string>
+   </property>
+  </action>
+  <action name="actionView_inn_avoids">
+   <property name="text">
+    <string>View INN Avoids</string>
+   </property>
+  </action>
+  <action name="actionProject_avoids">
+   <property name="text">
+    <string>Project Avoids</string>
+   </property>
+  </action>
+  <action name="actionInternal_names">
+   <property name="text">
+    <string>Internal Names</string>
+   </property>
+  </action>
+  <action name="actionPresented_names">
+   <property name="text">
+    <string>Presented Names</string>
+   </property>
+  </action>
+  <action name="actionCompetitor_names">
+   <property name="text">
+    <string>Competitor Names</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>Options</string>
+   </property>
+   <property name="statusTip">
+    <string>View Options</string>
+   </property>
+  </action>
+  <action name="actionTool_1">
+   <property name="text">
+    <string>Tool 1</string>
+   </property>
+  </action>
+  <action name="actionTool_style">
+   <property name="text">
+    <string>Tool 2</string>
+   </property>
+  </action>
+  <action name="actionTool_3">
+   <property name="text">
+    <string>Tool 3</string>
+   </property>
+  </action>
+  <action name="actionTool_4">
+   <property name="text">
+    <string>Tool 4</string>
+   </property>
+  </action>
+  <action name="actionTool_5">
+   <property name="text">
+    <string>Tool 5</string>
+   </property>
+  </action>
+  <action name="actionSave_names">
+   <property name="text">
+    <string>Commit Names</string>
+   </property>
+  </action>
+  <action name="actionSort_names">
+   <property name="text">
+    <string>Sort Names (A-Z)</string>
+   </property>
+  </action>
+  <action name="actionFind_conflicts">
+   <property name="text">
+    <string>Find Conflicts</string>
+   </property>
+  </action>
+  <action name="actionClear_avoids">
+   <property name="text">
+    <string>Clear All Avoids</string>
+   </property>
+  </action>
+  <action name="actionView_stripped_names">
+   <property name="text">
+    <string>View names without rationale</string>
+   </property>
+  </action>
+  <action name="actionINN_avoids_password_required">
+   <property name="text">
+    <string>INN avoids (password req.)</string>
+   </property>
+  </action>
+  <action name="actionPharma_Avoids_password_req">
+   <property name="text">
+    <string>Pharma Avoids (password req.)</string>
+   </property>
+  </action>
+  <action name="actionINN_avoids">
+   <property name="text">
+    <string>INN Avoids</string>
+   </property>
+  </action>
+  <action name="actionPharma_avoids">
+   <property name="text">
+    <string>Pharma Avoids</string>
+   </property>
+  </action>
+  <action name="actionAdd_avoids">
+   <property name="text">
+    <string>Add Avoids</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
