@@ -22,10 +22,3 @@ Users are also able to export the data to an excel document which is in the exac
 
 ![Picture](http://i.imgur.com/yjx9ayy.png?1) 
 
-
-PyQt4
-webbrowser
-requests
-Beautifulsoup
-urllib
-xlwt
